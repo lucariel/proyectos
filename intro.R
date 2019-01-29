@@ -119,3 +119,4 @@ hawkinsimmons<-function(A,x){
   return(T)
 }
 hawkinsimmons(diag(5)-C,5)
+
