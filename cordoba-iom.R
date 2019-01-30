@@ -1,3 +1,6 @@
+#This got really messy, lets start again in a V2
+
+
 ###Cordoba input-output matrix
 
 library(tidyverse)
@@ -7,11 +10,11 @@ matriz1<-read.csv("matriz-insumo-producto.csv", skip = 5)
 
 #Cleaning the headers to get the corresponding square matrix
 
-View(matriz1)
+#View(matriz1)
 matriz1<-matriz1[,-c(2:3)]
 matriz1<-matriz1[c(1:124), c(2:125)]
 rownames(matriz1)<-colnames(matriz1)
-View(matriz1)
+#View(matriz1)
 ncol(matriz1)
 nrow(matriz1)
 ##Here I encountered with some limitations: the gov reports 145 columns 
@@ -31,13 +34,13 @@ y<-y[,-1]
 total<-as.numeric(totals[1,])
 k<-x/total
 
-View(k)
+#View(k)
 #and now k is a correlation matrix
 library(corrplot)
 corrplot(as.matrix(k), method = "circle")
 nrow(k)
 colnames(k)<-c(1:ncol(k))
-View(k)
+#View(k)
 library(zoom)
 
 #What I learn with this is that the matrix has too many entries to be properly visualized.
@@ -48,9 +51,14 @@ library(zoom)
 #The idea is to create a new matrix from scratch build from the first one
 
 ##Properly convert to numeric
-matriz1 <- mutate_all(matriz1, function(x) as.numeric(as.character(x)))
+library(readxl)
+install.packages("readxl")
+matriz1<-read_excel("matriz-insumo-productoexcel.xlsx", skip = 5)
 View(matriz1)
-class(matriz1$CULTIVOS.DE.CEREALES)
+
+
+
+
 
 ##testing colSums
 rowSums(matriz1[(1:2),], na.rm = T)
@@ -60,15 +68,15 @@ x <- matrix(1:20, 4)
 rowSums(x, n = 1)
 
 
-View(rowSums(matriz1[,(4:5),drop = F], na.rm = T))
+#View(rowSums(matriz1[,(4:5),drop = F], na.rm = T))
 #### working with rows########
 #The first 16 columns are the sector agro. 
 agro<-rowSums(matriz1[,(4:20),drop = F], na.rm = T)
-View(agro)
+#View(agro)
 
 #the next 3 are from mining. 
 mining<-rowSums(matriz1[,(21:25),drop = F], na.rm = T)
-View(mining)
+#View(mining)
 
 #the 30 next are agroindustries
 agroindustries<-rowSums(matriz1[,(26:56),drop = F], na.rm = T)
@@ -116,16 +124,14 @@ gov<-rowSums(matriz1[,(133:139),drop = F], na.rm = T)
 
 
 nmatriz<-cbind(agro,mining,agroindustries,chemistry,steal_derivatives,steal_mechanic,basicservices, construction, commerce, turism, comunications, finances,professional_services, gov)
-View(nmatriz)
+#View(nmatriz)
 ###########Working with columns
 
 #The first 16 columns are the sector agro. 
 agro1<-colSums(nmatriz[(4:20),,drop = F], na.rm = T)
-View(agro)
 
 #the next 3 are from mining. 
 mining1<-colSums(nmatriz[(21:25),,drop = F], na.rm = T)
-View(mining)
 
 #the 30 next are agroindustries
 agroindustries1<-colSums(nmatriz[(26:56),,drop = F], na.rm = T)
@@ -173,11 +179,11 @@ gov1<-colSums(nmatriz[(133:139),,drop = F], na.rm = T)
 
 
 nmatriz<-rbind(agro1,mining1,agroindustries1,chemistry1,steal_derivatives1,steal_mechanic1,basicservices1, construction1, commerce1, turism1, comunications1, finances1,professional_services1, gov1)
-View(nmatriz)
+#View(nmatriz)
 
 ##Col and row of thesame name
 rownames(nmatriz)<-colnames(nmatriz)
-View(nmatriz)
+#View(nmatriz)
 
 
 #
@@ -186,6 +192,8 @@ totals<-tail(y,1)
 y<-y[,-1]
 total<-as.numeric(totals[1,])
 k<-nmatriz/total
-View(k)
+#View(k)
 corrplot(as.matrix(k), method = "circle")
 ##Now makes more sense the plot next time I'll analyse it
+###30/1
+
