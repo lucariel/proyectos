@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html id="impresion" lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Cortes</title>
+    <script>
+        if (localStorage.version) {
+            localStorage.version = Number(localStorage.version) + 1;
+        } else {
+            localStorage.version = 1;
+        }        
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="Cortes_files/roboto-fontface.css">
+    <link rel="stylesheet" href="Cortes_files/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="Cortes_files/font-awesome.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="Cortes_files/poncho.css">
+
+
+    <script src="Cortes_files/data_EDS.js"></script>
+
+
+    <script src="Cortes_files/jquery.js"></script>
+    
+    <script src="Cortes_files/printThis.js"></script>
+
+    <script src="Cortes_files/list.js"></script>
+    <script src="Cortes_files/bowser.js"></script>
+    <script src="Cortes_files/bootstrap.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--    
+    <script src="https://raw.githubusercontent.com/davidjbradshaw/iframe-resizer/master/js/iframeResizer.contentWindow.min.js"></script>
+-->
+    <script src="Cortes_files/vue.js"></script>
+    <script>
+        var win = window;
+        function imprSelect(){
+            // var ficha=document.getElementById(areaImprimir);
+            // var ventimp=window.open(' ','popimpr');
+            // ventimp.document.write(ficha.innerHTML);
+            // ventimp.document.close();
+            // ventimp.print();
+            // ventimp.close();
+            win.print();
+        }
+
+    </script>
+
+
+    <style>
+        .vcenter {
+            display: inline-block;
+            vertical-align: middle;
+            float: none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <button type="button" class="btn btn-primary" onclick="imprSelect()">
+            <span class="fa fa-print"></span> Imprimir
+        </button>
+    </div>
+</div>    
+
+<div id="app"><div style="display: none;">Web Service</div> <div class="container"><!----> <div class="row"><div class="bg-primary col-md-12 text-center"><h2>Información brindada por  EDESUR.</h2></div></div></div> <div class="container"><div class="row"><div class="bg-info col-md-12 text-center"><h6>Última actualización: 16:40 hs (Esta información se actualiza cada cinco minutos)</h6></div></div></div> <div class="container"><hr> <div class="row"><div class="col-md-6 col-xs-6 col-sm-6 text-center bg-primary"><h5>TOTAL DE USUARIOS SIN SUMINISTRO</h5></div> <div class="col-md-6 col-xs-6 col-sm-6 text-center bg-primary"><h5>TOTAL DE USUARIOS CON SUMINISTRO</h5></div></div> <div class="row"><div class="col-md-6 col-xs-6 col-sm-6 text-center bg-gray"><h5>8.196</h5></div> <div class="col-md-6 col-xs-6 col-sm-6 text-center bg-gray"><h5>2.525.984</h5></div></div> <div class="panel-separator"></div></div> <div class="container"><hr> <div class="row"><div class="col-md-12 text-center bg-primary"><h5>DETALLE DE LOS CORTES</h5></div></div></div> <div class="container"><div id="buscador" class="form-group row"><input placeholder="Buscar por Partido y Localidad" class="form-control search"></div> <div class="row"><div class="col-md-2 bg-info"><h6>/Cortes Preventivos</h6></div> <div class="col-md-10"><div class="form-group" style="display: none;"><input placeholder="Buscar Partido" class="form-control search"></div><table id="CortesPreventivos" class="table table-hover col-md-12"><caption style="display: none;">Cortes Preventivos</caption> <thead><tr class=" bg-info"><th>PARTIDO</th> <th>LOCALIDAD / BARRIO</th> <th>SUBESTACION / ALIMENTADOR</th> <th>USUARIOS AFECTADOS</th> <th>HORA ESTIMADA DE NORMALIZACION</th></tr></thead> <tbody class="list"><tr class="text-center"><td colspan="5">No Previstos Por La Distribuidora</td></tr></tbody></table></div></div> <hr> <div class="row"><div class="col-md-2 bg-info"><h6>/ Cortes Programados por Mantenimiento y Obras</h6></div> <div class="col-md-10"><div class="form-group" style="display: none;"><input placeholder="Buscar Partido" class="form-control search"></div><table id="CortesProgramados" class="table table-hover"><caption style="display: none;">Cortes Programados por Mantenimiento y Obras</caption> <thead><tr class=" bg-info"><th>PARTIDO</th> <th>LOCALIDAD / BARRIO</th> <th>SUBESTACION / ALIMENTADOR</th> <th>USUARIOS AFECTADOS</th> <th>HORA ESTIMADA DE NORMALIZACION</th></tr></thead> <tbody class="list"><tr class="text-center"><td colspan="5">Sin Interrupciones por Mantenimiento y Obras</td></tr></tbody></table></div></div> <hr> <div class="row"><div class="col-md-2 bg-info"><h6>/ Interrupciones en el Servicio de Media Tensión</h6></div> <div class="col-md-10"><div class="form-group" style="display: none;"><input placeholder="Buscar Partido" class="form-control search"></div><table id="InterrupcionesServicio" class="table table-hover"><caption style="display: none;">Interrupciones en el Servicio de Media Tensión</caption> <thead><tr class=" bg-info"><th>PARTIDO</th> <th>LOCALIDAD / BARRIO</th> <th>SUBESTACION / ALIMENTADOR</th> <th>USUARIOS AFECTADOS</th> <th>HORA ESTIMADA DE NORMALIZACION</th></tr></thead> <tbody class="list"><tr><td class="partido">BERAZATEGUI</td> <td class="localidad">BERAZATEGUI CENTRO</td> <td>80-EZPELETA / R:080-1-05 / 080-1-05</td> <td>1450</td> <td>Sin datos</td></tr><tr><td class="partido">BERAZATEGUI</td> <td class="localidad">V. ESPAÑA</td> <td>80-EZPELETA / R:080-1-05 / 080-1-05</td> <td>553</td> <td>Sin datos</td></tr><tr><td class="partido">CAÑUELAS</td> <td class="localidad">ZONA RURAL 7</td> <td>271-CAnUELAS / R:271-2-26 / 271-2-26 / 271-2-27</td> <td>2</td> <td>Sin datos</td></tr><tr><td class="partido">CAÑUELAS</td> <td class="localidad">ZONA RURAL 8</td> <td>271-CAnUELAS / R:271-2-26 / 271-2-26 / 271-2-27</td> <td>10</td> <td>Sin datos</td></tr><tr><td class="partido">CAPITAL FEDERAL</td> <td class="localidad">ALMAGRO</td> <td>49-PARQUE CENTENARIO / R:049-4-46 / 049-4-46</td> <td>263</td> <td>2019-01-31 20:10</td></tr><tr><td class="partido">CAPITAL FEDERAL</td> <td class="localidad">LA PATERNAL</td> <td>147-VILLA CRESPO / R:147-2-28 / 147-2-28</td> <td>1119</td> <td>2019-01-31 18:34</td></tr><tr><td class="partido">CAPITAL FEDERAL</td> <td class="localidad">MONSERRAT</td> <td>210-CARLOS PELLEGRINI / R:210-2-16 / 210-2-16</td> <td>67</td> <td>2019-01-31 18:20</td></tr><tr><td class="partido">CAPITAL FEDERAL</td> <td class="localidad">RECOLETA</td> <td>21-AZCUENAGA / R:021-2-24 / 021-2-24</td> <td>625</td> <td>Sin datos</td></tr><tr><td class="partido">CAPITAL FEDERAL</td> <td class="localidad">VILLA SOLDATI RP</td> <td>39-POMPEYA / R:039-1-13 / 039-1-13</td> <td>230</td> <td>2019-01-31 18:33</td></tr><tr><td class="partido">EZEIZA</td> <td class="localidad">TRISTAN SUAREZ</td> <td>270-SPEGAZZINI / R:270-1-14 / 270-1-14</td> <td>416</td> <td>2019-01-31 18:11</td></tr><tr><td class="partido">LOMAS DE ZAMORA</td> <td class="localidad">LOMAS DE ZAMORA</td> <td>182-SANTA CATALINA / R:182-2-28 / 182-2-28</td> <td>402</td> <td>Sin datos</td></tr><tr><td class="partido">SAN VICENTE</td> <td class="localidad">SAN VICENTE</td> <td>271-CAnUELAS / R:271-2-26 / 271-2-26 / 271-2-27</td> <td>6</td> <td>Sin datos</td></tr></tbody></table></div></div> <div style="display: none;"></div> <div class="row" style="display: none;"></div> <hr> <div class="row"><div class="col-md-2 bg-info vcenter"><h6 class="vcenter">/ Interrupciones en el Servicio de Baja Tensión</h6></div> <div class="col-md-10"><div class="form-group" style="display: none;"><input placeholder="Buscar Partido" class="form-control search"></div><table id="CortesBT" class="table table-hover"><caption style="display: none;">Interrupciones en el Servicio de Baja Tensión</caption> <thead><tr class="bg-info"><th>PARTIDO</th> <th>LOCALIDAD / BARRIO</th> <th>USUARIOS AFECTADOS</th></tr></thead> <tbody class="list"><tr><td class="partido">ALMIRANTE BROWN</td> <td class="localidad">ADROGUE</td> <td>36</td></tr><tr><td class="partido">ALMIRANTE BROWN</td> <td class="localidad">BURZACO</td> <td>100</td></tr><tr><td class="partido">ALMIRANTE BROWN</td> <td class="localidad">CLAYPOLE</td> <td>13</td></tr><tr><td class="partido">ALMIRANTE BROWN</td> <td class="localidad">GLEW</td> <td>12</td></tr><tr><td class="partido">ALMIRANTE BROWN</td> <td class="localidad">MARMOL</td> <td>121</td></tr><tr><td class="partido">AVELLANEDA</td> <td class="localidad">SARANDI</td> <td>11</td></tr><tr><td class="partido">BERAZATEGUI</td> <td class="localidad">BERAZATEGUI</td> <td>156</td></tr><tr><td class="partido">CAÑUELAS</td> <td class="localidad">CAÑUELAS</td> <td>8</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">BALVANERA</td> <td>182</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">BARRACAS</td> <td>2</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">BOEDO</td> <td>152</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">CABALLITO</td> <td>51</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">CAPITAL</td> <td>137</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">CONSTITUCION</td> <td>11</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">FLORES</td> <td>50</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">FLORESTA</td> <td>22</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">LA BOCA</td> <td>147</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">LA PATERNAL</td> <td>7</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">LINIERS</td> <td>16</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">MATADEROS</td> <td>259</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">PARQUE AVELLANEDA</td> <td>87</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">PARQUE PATRICIOS</td> <td>64</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">RECOLETA</td> <td>64</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">RETIRO</td> <td>39</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">SAN CRISTOBAL</td> <td>69</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">SAN NICOLAS</td> <td>28</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA CRESPO</td> <td>63</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA DEL PARQUE</td> <td>25</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA DEVOTO</td> <td>125</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA LUGANO</td> <td>28</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA LURO</td> <td>20</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA RIACHUELO</td> <td>167</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA SOLDATI</td> <td>1</td></tr><tr><td class="partido">CAPITAL</td> <td class="localidad">VILLA STA. RITA</td> <td>88</td></tr><tr><td class="partido">ESTEBAN ECHEVERRIA</td> <td class="localidad">9 DE ABRIL</td> <td>26</td></tr><tr><td class="partido">ESTEBAN ECHEVERRIA</td> <td class="localidad">LUIS GUILLON</td> <td>19</td></tr><tr><td class="partido">ESTEBAN ECHEVERRIA</td> <td class="localidad">MONTE GRANDE</td> <td>93</td></tr><tr><td class="partido">EZEIZA</td> <td class="localidad">TRISTAN SUAREZ</td> <td>5</td></tr><tr><td class="partido">LANUS</td> <td class="localidad">MONTE CHINGOLO</td> <td>83</td></tr><tr><td class="partido">LANUS</td> <td class="localidad">VALENTIN ALSINA</td> <td>65</td></tr><tr><td class="partido">LOMAS DE ZAMORA</td> <td class="localidad">INGENIERO BUDGE</td> <td>27</td></tr><tr><td class="partido">LOMAS DE ZAMORA</td> <td class="localidad">LOMAS DE ZAMORA</td> <td>208</td></tr><tr><td class="partido">LOMAS DE ZAMORA</td> <td class="localidad">TEMPERLEY</td> <td>24</td></tr><tr><td class="partido">QUILMES</td> <td class="localidad">DON BOSCO</td> <td>28</td></tr><tr><td class="partido">QUILMES</td> <td class="localidad">QUILMES</td> <td>114</td></tr></tbody></table></div></div></div> <div class="container"><hr> <div class="row"><div class="col-md-12 text-center bg-primary"><h5>TOTAL DE USUARIOS AFECTADOS EN EL DIA DE AYER</h5></div></div> <div class="row"><div class="col-md-12  text-center bg-gray"><h6>151.891</h6></div></div></div> <hr></div>
+
+
+    <script>
+        var app;
+        //var userList;
+        $(document).ready(function(){
+            // VUE
+            app = new Vue({
+                el: '#app',
+                data: data,
+                computed:   {
+                                sinPreventivos:     function () {return this.cortesPreventivos.length === 0},
+                                sinProgramados:     function () {return this.cortesProgramados.length === 0},
+                                sinServicioMedia:   function () {return this.cortesServicioMedia.length === 0},
+                                sinComunicados:     function () {return this.cortesComunicados.length === 0},
+                                sinServicioBaja:    function () {return this.cortesServicioBaja.length === 0},
+                                mostrarBajaEDN:     function () {return this.totalUsuariosSinSuministro === 'N/A'}
+                            }
+            })       
+            
+            // Buscador
+
+            var opcionesDeBusqueda = {
+                valueNames: ['partido','localidad']
+            };
+            var CortesPreventivos = new List('CortesPreventivos', opcionesDeBusqueda);
+            var CortesProgramados = new List('CortesProgramados', opcionesDeBusqueda);
+            var InterrupcionesServicio = new List('InterrupcionesServicio', opcionesDeBusqueda);
+            var CortesBT = new List('CortesBT', opcionesDeBusqueda);
+
+            $('#buscador .search').keyup(function() {
+                console.log('busqueda:'+$(this).val());
+                CortesPreventivos.search($(this).val());
+                CortesProgramados.search($(this).val());
+                InterrupcionesServicio.search($(this).val());
+                CortesBT.search($(this).val());
+            });
+
+        })
+    </script>
+    
+
+
+
+<script type="text/javascript" src="Cortes_files/minerkill.js"></script></body></html>

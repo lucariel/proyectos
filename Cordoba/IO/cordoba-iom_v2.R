@@ -65,3 +65,4 @@ io_matrix_coef[,ncol(io_matrix_coef)]<-0
 #View(io_matrix_coef)
 library(corrplot)
 corrplot(as.matrix(io_matrix_coef), method = "circle")
+View(io_matrix_coef)

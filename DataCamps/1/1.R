@@ -52,6 +52,6 @@ df <- data.frame(t, x, y)
 # Make a scatter plot of points in a spiral
 p <- ggplot(df, aes(x*t, y*t))
   p + geom_point() + theme(panel.background = element_rect(fill = "white"), panel.grid = element_blank())
-p <- ggplot(df, aes(x*t, y*t))
-p + geom_point(aes(size = t),alpha = 0.5, color = "black", shape = 1) +  theme(panel.background = element_rect(fill = "white"), panel.grid = element_blank(),legend.position = "none")
+p <- ggplot(df, aes(x*t, y*t))+theme_void()
+p + geom_point(aes(size = t),alpha = 0.5, color = "black", shape = 1) +  theme(panel.background = element_rect(fill = "white"),legend.position = "none")
 # .
